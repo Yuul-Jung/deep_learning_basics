@@ -45,4 +45,27 @@ def grid(x, y, vals, cell=34, fill='#FFFFFF', stroke=INK, size=14, hl=None):
             out.append(text(x + c * cell + cell / 2, y + r * cell + cell / 2 + 5, str(v), size, mono=True))
     return ''.join(out)
 
+def plot_frame(x0, y0, w, h, xr, yr, xt, yt, xl='', yl=''):
+    """좌표축과 눈금. 반환: (그림 조각, 좌표 변환 함수)"""
+    X = lambda v: x0 + (v - xr[0]) / (xr[1] - xr[0]) * w
+    Y = lambda v: y0 + h - (v - yr[0]) / (yr[1] - yr[0]) * h
+    b = [f'<rect x="{x0}" y="{y0}" width="{w}" height="{h}" fill="#FBFBF9" stroke="{LINE}" stroke-width="1"/>']
+    for v in xt:
+        b.append(f'<line x1="{X(v):.1f}" y1="{y0}" x2="{X(v):.1f}" y2="{y0 + h}" stroke="#E6E7E2" stroke-width="1"/>')
+        b.append(text(X(v), y0 + h + 16, f'{v:g}', 11, 400, '#4A4F5A'))
+    for v in yt:
+        b.append(f'<line x1="{x0}" y1="{Y(v):.1f}" x2="{x0 + w}" y2="{Y(v):.1f}" stroke="#E6E7E2" stroke-width="1"/>')
+        b.append(text(x0 - 6, Y(v) + 4, f'{v:g}', 11, 400, '#4A4F5A', 'end'))
+    if xl: b.append(text(x0 + w / 2, y0 + h + 34, xl, 12, 500))
+    if yl: b.append(f'<text x="{x0 - 34}" y="{y0 + h / 2}" font-size="12" font-weight="500" fill="{INK}" text-anchor="middle" transform="rotate(-90 {x0 - 34} {y0 + h / 2})">{escape(yl)}</text>')
+    return ''.join(b), X, Y
 
+
+def poly(points, color, sw=2, dash=False):
+    d = ' stroke-dasharray="6 4"' if dash else ''
+    pts = ' '.join(f'{x:.1f},{y:.1f}' for x, y in points)
+    return f'<polyline points="{pts}" fill="none" stroke="{color}" stroke-width="{sw}"{d}/>'
+
+
+def dot(x, y, color, r=5, fill=None):
+    return f'<circle cx="{x:.1f}" cy="{y:.1f}" r="{r}" fill="{fill or color}" stroke="{color}" stroke-width="1.5"/>'

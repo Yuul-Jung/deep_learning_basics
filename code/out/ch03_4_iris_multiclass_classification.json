@@ -1,0 +1,29 @@
+{
+ "01": "데이터 shape: (150, 5)\n열 이름: ['F1', 'F2', 'F3', 'F4', 'label']\n",
+ "02": "앞부분 5행:\n    F1   F2   F3   F4        label\n0  5.1  3.5  1.4  0.2  Iris-setosa\n1  4.9  3.0  1.4  0.2  Iris-setosa\n2  4.7  3.2  1.3  0.2  Iris-setosa\n3  4.6  3.1  1.5  0.2  Iris-setosa\n4  5.0  3.6  1.4  0.2  Iris-setosa\n\n결측값 수: 0\n중복 행 수: 3\n\n품종별 데이터 수:\nlabel\nIris-setosa        50\nIris-versicolor    50\nIris-virginica     50\nName: count, dtype: int64\n",
+ "03": "",
+ "04": "입력 shape: (150, 4)\n정답 shape: (150,)\n정답 클래스: [np.int64(0), np.int64(1), np.int64(2)]\n",
+ "05": "훈련 데이터: (120, 4) (120,)\n테스트 데이터: (30, 4) (30,)\n\n훈련 클래스별 개수:\nlabel\n0    40\n1    40\n2    40\nName: count, dtype: int64\n\n테스트 클래스별 개수:\nlabel\n0    10\n1    10\n2    10\nName: count, dtype: int64\n",
+ "06": "표준화 후 훈련 평균:\nF1   -0.0\nF2    0.0\nF3    0.0\nF4    0.0\ndtype: float32\n\n표준화 후 훈련 표준편차:\nF1    1.0\nF2    1.0\nF3    1.0\nF4    1.0\ndtype: float32\n",
+ "07": "훈련 Tensor: torch.Size([120, 4]) torch.Size([120])\n테스트 Tensor: torch.Size([30, 4]) torch.Size([30])\n",
+ "08": "Linear(in_features=4, out_features=3, bias=True)\n가중치 shape: torch.Size([3, 4])\n편향 shape: torch.Size([3])\n",
+ "09": "처음 Loss: 1.1028995513916016\n마지막 Loss: 0.0964701846241951\n",
+ "10": "",
+ "11": "훈련 정확도: 0.9750\n테스트 정확도: 0.9667\n",
+ "12": "번호  | 실제 품종            | 예측 품종            | 확률 [setosa, versicolor, virginica]\n   0 | Iris-setosa        | Iris-setosa        | [0.995, 0.005, 0.0]\n   1 | Iris-virginica     | Iris-virginica     | [0.0006, 0.2972, 0.7022]\n   2 | Iris-versicolor    | Iris-versicolor    | [0.0921, 0.9042, 0.0037]\n   3 | Iris-versicolor    | Iris-versicolor    | [0.0483, 0.9475, 0.0042]\n   4 | Iris-setosa        | Iris-setosa        | [0.9979, 0.0021, 0.0]\n   5 | Iris-versicolor    | Iris-versicolor    | [0.0051, 0.7222, 0.2727]\n   6 | Iris-setosa        | Iris-setosa        | [0.9995, 0.0005, 0.0]\n   7 | Iris-setosa        | Iris-setosa        | [0.9763, 0.0237, 0.0]\n   8 | Iris-virginica     | Iris-virginica     | [0.0, 0.0823, 0.9177]\n   9 | Iris-versicolor    | Iris-versicolor    | [0.0266, 0.7747, 0.1986]\n",
+ "13": "테스트 혼동행렬:\ntensor([[10,  0,  0],\n        [ 0,  9,  1],\n        [ 0,  0, 10]])\n",
+ "14": "Iris-setosa       : 1.0000\nIris-versicolor   : 0.9000\nIris-virginica    : 1.0000\n",
+ "15": "잘못 분류한 테스트 데이터:\n입력 [6.699999809265137, 3.0, 5.0, 1.7000000476837158] | 실제 Iris-versicolor | 예측 Iris-virginica\n",
+ "16": "입력 [5.099999904632568, 3.5, 1.399999976158142, 0.20000000298023224] → Iris-setosa | 확률 [0.9953, 0.0047, 0.0] \n입력 [6.0, 2.9000000953674316, 4.5, 1.5] → Iris-versicolor | 확률 [0.0035, 0.8002, 0.1963] \n입력 [6.699999809265137, 3.0999999046325684, 5.599999904632568, 2.4000000953674316] → Iris-virginica | 확률 [0.0, 0.0053, 0.9947] \n",
+ "_figures": {
+  "03": [
+   "ch03_4_iris_multiclass_classification_03_1"
+  ],
+  "10": [
+   "ch03_4_iris_multiclass_classification_10_1"
+  ],
+  "13": [
+   "ch03_4_iris_multiclass_classification_13_1"
+  ]
+ }
+}
