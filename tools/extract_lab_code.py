@@ -15,23 +15,34 @@ for i in range(1, len(parts), 2):
     if names and name not in names: continue
     nb = nbdir / f'{name}.ipynb'
     cells = [''.join(c['source']) for c in json.loads(nb.read_text())['cells'] if c['cell_type'] == 'code'] if nb.exists() else []
-    bl = re.split(r'\n\s*CODE (\d\d)\s*\| Python 실습 코드\n', body)
+    bl = re.split(r'\n\s*CODE (\d\d)\s*\|\s*Python\s*실\s*습\s*코\s*드\n', body)
     out = [f'# {name}.py — 원본: lab_Pytorch/{name}.pdf 의 CODE 블록을 순서대로 옮김\n']
     for j in range(1, len(bl), 2):
-        lines = []
+        # 쪽이 바뀌면(\f) 왼쪽 여백이 달라질 수 있으므로 쪽 조각마다 들여쓰기 기준을 따로 잡는다
+        segs, cur, brk, base = [], [], False, None
         for l in bl[j + 1].split('\n'):
-            if re.match(r'^\s{0,1}\S', l): break
-            if re.match(r'^\s+\d+\s*$', l): continue
-            lines.append(l)
-        ind = min((len(l) - len(l.lstrip()) for l in lines if l.strip()), default=0)
-        # PDF 배치에서 들여쓰기가 1~2칸 어긋나는 일이 있어 4칸 단위로 맞춘다
-        code = '\n'.join((' ' * (((len(l) - len(l.lstrip()) - ind) + 1) // 4 * 4) + l.strip()) if l.strip() else ''
-                         for l in lines).strip('\n')
+            if '\f' in l:
+                l = l.replace('\f', '')
+                if cur: segs.append(cur); cur = []; brk = True
+            if re.match(r'^\s{20,}\d+\s*$', l): continue          # 쪽 번호(오른쪽 멀리 있는 숫자만)
+            if re.match(r'^\s{0,1}([가-힣•]|\d+[.)]\s)', l) or l.startswith('########'): break
+            ind_l = len(l) - len(l.lstrip())
+            if l.strip() and base is None: base = ind_l
+            if l.strip() and not brk and ind_l < base: break   # 첫 코드 줄보다 왼쪽으로 나오면 본문
+            cur.append(l)
+        if cur: segs.append(cur)
+        lines = []
+        for seg in segs:
+            ind = min((len(l) - len(l.lstrip()) for l in seg if l.strip()), default=0)
+            # PDF 배치에서 들여쓰기가 1~2칸 어긋나는 일이 있어 4칸 단위로 맞춘다
+            lines += [(' ' * (((len(l) - len(l.lstrip()) - ind) + 1) // 4 * 4) + l.strip()) if l.strip() else '' for l in seg]
+        code = '\n'.join(lines).strip('\n')
+        note = ' [쪽 넘김 확인 필요]' if len(segs) > 1 else ''
         src = 'pdf'
         for c in cells:
             if norm(c) == norm(code): code, src = c.strip('\n'), 'nb'; break
         try: compile(code, 'x', 'exec'); ok = ''
         except SyntaxError as e: ok = f'  ← 문법 오류 {e.lineno}행: {e.msg}'
-        print(f'{name} CODE {bl[j]} [{src}]{ok}')
+        print(f'{name} CODE {bl[j]} [{src}]{ok}{note if src == "pdf" else ""}')
         out.append(f'\n# %% CODE {bl[j]}\n{code}\n')
     Path('code', f'{name}.py').write_text(''.join(out), encoding='utf-8')

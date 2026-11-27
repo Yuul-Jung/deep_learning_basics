@@ -21,7 +21,7 @@ NumPy와 PyTorch 텐서에서 출발해 선형회귀, 분류, 다층 퍼셉트�
 | 1 | NumPy와 PyTorch 텐서 | 실습 `ch01_1`~`ch01_3` | v01 |
 | 2 | 선형회귀 | 강의 2장 + 실습 `ch02_1`~`ch02_6` | v01 |
 | 3 | 분류 | 강의 3장 + 실습 `ch03_1`~`ch03_4` | v01 |
-| 4 | 딥러닝: MLP | 강의 4장 + 실습 `ch04_1`~`ch04_6` | 작성 예정 |
+| 4 | 딥러닝: MLP | 강의 4장 + 실습 `ch04_1`~`ch04_6` | v01 |
 | 5 | 합성곱 신경망(CNN) | 강의 5장 + 실습 `ch05_1`~`ch05_2` | 작성 예정 |
 
 ## 폴더
@@ -40,7 +40,8 @@ NumPy와 PyTorch 텐서에서 출발해 선형회귀, 분류, 다층 퍼셉트�
 ## 다시 만들기
 
 ```bash
-python3 -m pip install numpy torch matplotlib pandas scikit-learn mistune latex2mathml
+python3 -m pip install numpy torch torchvision matplotlib pandas scikit-learn mistune latex2mathml
+# 4장부터 MNIST·Fashion-MNIST를 code/data/ 에 내려받고, 학습한 모델은 code/models/ 에 저장한다(둘 다 git 제외)
 python3 tools/run_blocks.py code/ch01_1_numpy_torch.py   # 파일마다 실행 결과 갱신 → code/out/<파일>.json
 python3 tools/run_blocks.py code/ch02_4_linear_regression.py              # 그림이 있는 블록은 figures/에 SVG도 저장
 (cd tools && for f in make_figures_ch0*.py; do python3 $f; done)   # 설명 그림
@@ -77,3 +78,13 @@ python3 build.py                       # dist/ 생성
 | 수치 대조 | 통과 | 시그모이드·BCE·소프트맥스·교차엔트로피·혼동행렬 지표를 실행 결과와 대조 |
 | 화면 | 통과 | 1366 · 390px에서 가로 넘침 0, 스크립트 오류 0 |
 | 1·2장 재실행 | 통과 | 3장 작업 전 1·2장 전체 코드를 다시 실행해 실행 결과·그림이 바이트 단위로 같음을 확인 |
+
+## 검증 (4장 v01)
+
+| 항목 | 판정 | 내용 |
+|---|---|---|
+| 코드 실행 | 통과 | 실습 123블록(4-1 16, 4-2 14, 4-3 25, 4-4 24, 4-5 30, 4-6 14) + 추가 확인 4블록을 CPU에서 실행(torchvision 0.29), 그래프는 실행 중 저장한 SVG |
+| 원본 대조 | 통과(보완 표시) | 실습 PDF 4개·노트북 2개와 순서 일치. PDF 쪽 아래로 잘린 3블록은 원본 노트북·PDF 내부 글자로 되살리거나 `(보완)` 주석으로 채움(본문 "원본 자료와 달라진 점") |
+| 수치 대조 | 통과 | 파라미터 수(101,770 · 535,818 · 235,146), Iteration 860 · 4,300, 혼동행렬 지표를 실행 결과와 대조 |
+| 화면 | 통과 | 1366 · 390px에서 가로 넘침 0, 스크립트 오류 0 |
+| GPU 실행 | 미검증 | 실행 환경에 GPU 없음 |

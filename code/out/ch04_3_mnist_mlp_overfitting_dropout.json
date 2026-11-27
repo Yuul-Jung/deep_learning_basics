@@ -1,0 +1,48 @@
+{
+ "01": "데이터 폴더: data\n모델 폴더 : models\n이미지 폴더: png\n",
+ "02": "",
+ "03": "사용 장치: cpu\n",
+ "04": "실습용 훈련 데이터: 8000\n검증 데이터: 2000\n테스트 데이터: 10000\n",
+ "05": "배치 이미지 shape: torch.Size([128, 1, 28, 28])\n배치 정답 shape: torch.Size([128])\n",
+ "06": "기본 MLP 파라미터 수: 535,818\nDropout MLP 파라미터 수: 535,818\n",
+ "07": "",
+ "08": "",
+ "09": "",
+ "10": "\n[기본 MLP] 학습 시작\nEpoch 1/15 | Train Loss 0.6033 | Train Accuracy 0.8249 | Validation Loss 0.2858 | Validation Accuracy 0.9150\nEpoch 2/15 | Train Loss 0.2401 | Train Accuracy 0.9263 | Validation Loss 0.2103 | Validation Accuracy 0.9330\nEpoch 3/15 | Train Loss 0.1458 | Train Accuracy 0.9550 | Validation Loss 0.1959 | Validation Accuracy 0.9395\nEpoch 4/15 | Train Loss 0.0975 | Train Accuracy 0.9706 | Validation Loss 0.1630 | Validation Accuracy 0.9475\nEpoch 5/15 | Train Loss 0.0705 | Train Accuracy 0.9774 | Validation Loss 0.1639 | Validation Accuracy 0.9510\nEpoch 6/15 | Train Loss 0.0490 | Train Accuracy 0.9852 | Validation Loss 0.1408 | Validation Accuracy 0.9585\nEpoch 7/15 | Train Loss 0.0277 | Train Accuracy 0.9931 | Validation Loss 0.1394 | Validation Accuracy 0.9610\nEpoch 8/15 | Train Loss 0.0180 | Train Accuracy 0.9954 | Validation Loss 0.1841 | Validation Accuracy 0.9555\nEpoch 9/15 | Train Loss 0.0107 | Train Accuracy 0.9978 | Validation Loss 0.1469 | Validation Accuracy 0.9640\nEpoch 10/15 | Train Loss 0.0058 | Train Accuracy 0.9994 | Validation Loss 0.1565 | Validation Accuracy 0.9625\nEpoch 11/15 | Train Loss 0.0027 | Train Accuracy 0.9999 | Validation Loss 0.1572 | Validation Accuracy 0.9620\nEpoch 12/15 | Train Loss 0.0019 | Train Accuracy 1.0000 | Validation Loss 0.1576 | Validation Accuracy 0.9625\nEpoch 13/15 | Train Loss 0.0013 | Train Accuracy 1.0000 | Validation Loss 0.1605 | Validation Accuracy 0.9610\nEpoch 14/15 | Train Loss 0.0009 | Train Accuracy 1.0000 | Validation Loss 0.1619 | Validation Accuracy 0.9630\nEpoch 15/15 | Train Loss 0.0007 | Train Accuracy 1.0000 | Validation Loss 0.1618 | Validation Accuracy 0.9630\n",
+ "11": "\n[Dropout MLP] 학습 시작\nEpoch 1/15 | Train Loss 0.7007 | Train Accuracy 0.7849 | Validation Loss 0.2994 | Validation Accuracy 0.9120\nEpoch 2/15 | Train Loss 0.2943 | Train Accuracy 0.9075 | Validation Loss 0.2228 | Validation Accuracy 0.9330\nEpoch 3/15 | Train Loss 0.2066 | Train Accuracy 0.9354 | Validation Loss 0.2038 | Validation Accuracy 0.9360\nEpoch 4/15 | Train Loss 0.1641 | Train Accuracy 0.9467 | Validation Loss 0.1877 | Validation Accuracy 0.9435\nEpoch 5/15 | Train Loss 0.1265 | Train Accuracy 0.9607 | Validation Loss 0.1576 | Validation Accuracy 0.9535\nEpoch 6/15 | Train Loss 0.1029 | Train Accuracy 0.9675 | Validation Loss 0.1492 | Validation Accuracy 0.9580\nEpoch 7/15 | Train Loss 0.0769 | Train Accuracy 0.9759 | Validation Loss 0.1569 | Validation Accuracy 0.9560\nEpoch 8/15 | Train Loss 0.0634 | Train Accuracy 0.9811 | Validation Loss 0.1583 | Validation Accuracy 0.9555\nEpoch 9/15 | Train Loss 0.0502 | Train Accuracy 0.9839 | Validation Loss 0.1722 | Validation Accuracy 0.9515\nEpoch 10/15 | Train Loss 0.0531 | Train Accuracy 0.9844 | Validation Loss 0.1610 | Validation Accuracy 0.9545\nEpoch 11/15 | Train Loss 0.0462 | Train Accuracy 0.9849 | Validation Loss 0.1449 | Validation Accuracy 0.9630\nEpoch 12/15 | Train Loss 0.0432 | Train Accuracy 0.9858 | Validation Loss 0.1512 | Validation Accuracy 0.9605\nEpoch 13/15 | Train Loss 0.0322 | Train Accuracy 0.9900 | Validation Loss 0.1480 | Validation Accuracy 0.9615\nEpoch 14/15 | Train Loss 0.0337 | Train Accuracy 0.9882 | Validation Loss 0.1613 | Validation Accuracy 0.9580\nEpoch 15/15 | Train Loss 0.0333 | Train Accuracy 0.9885 | Validation Loss 0.1903 | Validation Accuracy 0.9530\n",
+ "12": "",
+ "13": "",
+ "14": "",
+ "15": "",
+ "16": "",
+ "17": "",
+ "18": "\n[기본 MLP]\n최고 검증 Epoch: 9\n최고 검증 손실: 0.1469\n최고 검증 정확도: 0.9640\n마지막 훈련 정확도: 1.0000\n마지막 검증 정확도: 0.9630\n마지막 일반화 간격: 0.0370\n\n[Dropout MLP]\n최고 검증 Epoch: 11\n최고 검증 손실: 0.1449\n최고 검증 정확도: 0.9630\n마지막 훈련 정확도: 0.9885\n마지막 검증 정확도: 0.9530\n마지막 일반화 간격: 0.0355\n",
+ "19": "train() 출력이 같은가?: False\neval() 출력이 같은가?: True\n",
+ "20": "선택된 모델: 기본 MLP\n선택 Epoch: 9\n최고 검증 정확도: 0.9640\n",
+ "21": "선택된 모델: 기본 MLP\n테스트 손실: 0.1634\n테스트 정확도: 0.9545\n맞힌 이미지 수: 9,545 / 10,000\n",
+ "22": "",
+ "23": "",
+ "24": "",
+ "25": "저장 파일: models/ch04_3_best_mnist_mlp.pt\n불러온 모델: 기본 MLP\n저장된 검증 정확도: 0.9640\n",
+ "_figures": {
+  "12": [
+   "ch04_3_mnist_mlp_overfitting_dropout_12_1"
+  ],
+  "13": [
+   "ch04_3_mnist_mlp_overfitting_dropout_13_1"
+  ],
+  "14": [
+   "ch04_3_mnist_mlp_overfitting_dropout_14_1"
+  ],
+  "15": [
+   "ch04_3_mnist_mlp_overfitting_dropout_15_1"
+  ],
+  "23": [
+   "ch04_3_mnist_mlp_overfitting_dropout_23_1",
+   "ch04_3_mnist_mlp_overfitting_dropout_23_2",
+   "ch04_3_mnist_mlp_overfitting_dropout_23_3",
+   "ch04_3_mnist_mlp_overfitting_dropout_23_4",
+   "ch04_3_mnist_mlp_overfitting_dropout_23_5"
+  ]
+ }
+}

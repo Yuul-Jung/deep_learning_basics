@@ -1,0 +1,56 @@
+{
+ "01": "데이터 폴더: data\n모델 폴더  : models\n이미지 폴더: png\n",
+ "02": "",
+ "03": "사용 장치: cpu\n",
+ "04": "",
+ "05": "학습 데이터: 55000\n검증 데이터: 5000\n테스트 데이터: 10000\n",
+ "06": "",
+ "07": "배치 이미지 shape: torch.Size([128, 1, 28, 28])\n배치 정답 shape: torch.Size([128])\n",
+ "08": "Sequential(\n  (0): Flatten(start_dim=1, end_dim=-1)\n  (1): Linear(in_features=784, out_features=256, bias=True)\n  (2): ReLU()\n  (3): Linear(in_features=256, out_features=128, bias=True)\n  (4): ReLU()\n  (5): Linear(in_features=128, out_features=10, bias=True)\n)\n학습 파라미터 수: 235,146개\n",
+ "09": "",
+ "10": "",
+ "11": "",
+ "12": "",
+ "13": "Epoch  1/10 | Train Loss 0.5886 | Train Accuracy 0.7914 | Validation Loss 0.4506 | Validation Accuracy 0.8406\nEpoch  2/10 | Train Loss 0.3992 | Train Accuracy 0.8559 | Validation Loss 0.4017 | Validation Accuracy 0.8528\nEpoch  3/10 | Train Loss 0.3534 | Train Accuracy 0.8708 | Validation Loss 0.3830 | Validation Accuracy 0.8608\nEpoch  4/10 | Train Loss 0.3256 | Train Accuracy 0.8810 | Validation Loss 0.3600 | Validation Accuracy 0.8734\nEpoch  5/10 | Train Loss 0.3061 | Train Accuracy 0.8884 | Validation Loss 0.3641 | Validation Accuracy 0.8638\nEpoch  6/10 | Train Loss 0.2893 | Train Accuracy 0.8934 | Validation Loss 0.3397 | Validation Accuracy 0.8754\nEpoch  7/10 | Train Loss 0.2758 | Train Accuracy 0.8973 | Validation Loss 0.3387 | Validation Accuracy 0.8758\nEpoch  8/10 | Train Loss 0.2624 | Train Accuracy 0.9020 | Validation Loss 0.3382 | Validation Accuracy 0.8786\nEpoch  9/10 | Train Loss 0.2520 | Train Accuracy 0.9052 | Validation Loss 0.3214 | Validation Accuracy 0.8866\nEpoch 10/10 | Train Loss 0.2412 | Train Accuracy 0.9099 | Validation Loss 0.3148 | Validation Accuracy 0.8870\n",
+ "14": "\n최고 검증 Epoch: 10\n최고 검증 정확도: 0.8870\n",
+ "15": "",
+ "16": "",
+ "17": "테스트 손실: 0.3312\n테스트 정확도: 0.8848\n맞힌 이미지 수: 8,848 / 10,000\n",
+ "18": "전체 이미지 shape: torch.Size([10000, 1, 28, 28])\n전체 예측 shape: torch.Size([10000])\n",
+ "19": "",
+ "20": "",
+ "21": "",
+ "22": "0: 티셔츠    | 0.8700\n1: 바지     | 0.9690\n2: 풀오버    | 0.8500\n3: 원피스    | 0.9430\n4: 코트     | 0.7480\n5: 샌들     | 0.9510\n6: 셔츠     | 0.6280\n7: 운동화    | 0.9480\n8: 가방     | 0.9750\n9: 앵클부츠   | 0.9660\n\n가장 낮은 정확도의 의류: 셔츠\n",
+ "23": "",
+ "24": "실제 셔츠 → 예측 티셔츠: 156개\n",
+ "25": "",
+ "26": "",
+ "27": "",
+ "28": "원본 정확도: 0.8848\n",
+ "29": "2픽셀 이동 정확도: 0.5529\n정확도 감소: 0.3319\n예측 클래스 변경 비율: 0.4213\n",
+ "30": "저장 파일: models/ch04_5_best_fashion_mnist_mlp.pt\n저장된 검증 정확도: 0.8870\n저장된 테스트 정확도: 0.8848\n",
+ "_figures": {
+  "06": [
+   "ch04_5_fashion_mnist_mlp_training_evaluation_06_1"
+  ],
+  "15": [
+   "ch04_5_fashion_mnist_mlp_training_evaluation_15_1"
+  ],
+  "16": [
+   "ch04_5_fashion_mnist_mlp_training_evaluation_16_1"
+  ],
+  "21": [
+   "ch04_5_fashion_mnist_mlp_training_evaluation_21_1"
+  ],
+  "23": [
+   "ch04_5_fashion_mnist_mlp_training_evaluation_23_1"
+  ],
+  "25": [
+   "ch04_5_fashion_mnist_mlp_training_evaluation_25_1"
+  ],
+  "27": [
+   "ch04_5_fashion_mnist_mlp_training_evaluation_27_1",
+   "ch04_5_fashion_mnist_mlp_training_evaluation_27_2"
+  ]
+ }
+}
