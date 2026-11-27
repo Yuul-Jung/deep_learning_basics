@@ -1,0 +1,4 @@
+numpy
+torch
+mistune>=3
+latex2mathml

@@ -1,0 +1,66 @@
+{
+  "site_title": "딥러닝 기초",
+  "site_subtitle": "NumPy·텐서 → 선형회귀 → 분류 → MLP → CNN",
+  "site_description": "NumPy와 PyTorch 텐서에서 출발해 선형회귀, 분류, 다층 퍼셉트론(MLP), 합성곱 신경망(CNN)까지 강의와 실습을 한 장씩 이어 가는 딥러닝 기초 과정입니다. 모든 코드는 실제로 실행해 결과를 확인했습니다.",
+  "course_code": "DEEP LEARNING BASICS",
+  "version": "v01",
+  "goal": "가설 → 손실 → 경사하강법이라는 하나의 학습 뼈대가 선형회귀·분류·MLP·CNN에서 어떻게 반복되는지 이해하고, PyTorch로 직접 학습·평가할 수 있게 되는 것이 이 과정의 목표입니다. 1장은 그 바탕인 배열·텐서·자동 미분을 익힙니다.",
+  "lanes": [
+    {
+      "label": "바탕",
+      "chapters": [
+        1
+      ],
+      "caption": "배열·텐서·자동 미분"
+    }
+  ],
+  "count_key": "labs",
+  "count_label": "실습 노트북",
+  "count_unit": "실습",
+  "outcome_label": "핵심 결과",
+  "guide_rows": [
+    [
+      "읽는 순서",
+      "원본 실습 순서 그대로: 설명 → 그림 → 코드 → 실행 결과 → 코드 풀이"
+    ],
+    [
+      "실행 환경",
+      "Python 3 + NumPy + PyTorch. 본문 결과는 Python 3.13 · NumPy 2.5 · PyTorch 2.15(CPU)에서 실제로 실행한 값"
+    ],
+    [
+      "코드 위치",
+      "<code>code/chNN_K_*.py</code> — 원본 실습의 CODE 블록을 순서대로 옮긴 파일, <code>code/out/</code>에 실행 결과"
+    ],
+    [
+      "추가 확인 코드",
+      "원본에 없는 확인은 <code>code/chNN_extra_checks.py</code>에 두고 본문에 따로 표시"
+    ],
+    [
+      "그림",
+      "<code>tools/make_figures_chNN.py</code>로 만든 SVG(원본 그림)"
+    ]
+  ],
+  "principle": "원본 순서 → 그림 → 코드 → 실행 결과 → 풀이 순서로 진행합니다. 본문의 코드와 실행 결과는 `code/` 파일을 실제로 실행해 자동으로 넣은 것이고, 원본 자료와 달라진 점은 장 끝에 표로 밝힙니다. 판정은 통과·실패·미검증·해당 없음으로 나눕니다.",
+  "tool_chip": "NumPy · PyTorch",
+  "chapters": [
+    {
+      "id": "ch01",
+      "number": 1,
+      "title": "NumPy와 PyTorch 텐서",
+      "nav_title": "NumPy와 텐서",
+      "subtitle": "배열과 텐서 → 모양·인덱싱·연산 → 변환·장치 → 자동 미분",
+      "slug": "ch01_numpy_tensor",
+      "version": "v01",
+      "source": "content/ch01.md",
+      "tags": [
+        "ndarray",
+        "Tensor",
+        "shape",
+        "Autograd"
+      ],
+      "level": "바탕",
+      "outcome": "배열·텐서를 만들고 모양·연산·변환·자동 미분을 직접 확인",
+      "labs": 3
+    }
+  ]
+}
