@@ -34,6 +34,20 @@ def course_chapters():
     return chapters
 
 
+# (추가) 부록처럼 번호가 숫자가 아닌 장: course.json의 number에 "A" 같은 글자를 쓴다
+def no_text(ch):
+    n = ch['number'] if isinstance(ch, dict) else ch
+    return f"{n:02d}" if isinstance(n, int) else str(n)
+
+
+def ch_name(ch):
+    return f"제{no_text(ch)}장" if isinstance(ch['number'], int) else f"부록 {ch['number']}"
+
+
+def ch_kicker(ch):
+    return f"CHAPTER {no_text(ch)}" if isinstance(ch['number'], int) else f"APPENDIX {ch['number']}"
+
+
 CHAPTERS=course_chapters()
 
 def page(title, kicker, desc, chips, body, chapter_id='', footer=''):
@@ -146,7 +160,8 @@ def build_index(default_content):
     for ch in CHAPTERS:
         md = (ROOT / ch['source']).read_text(encoding='utf-8')
         toc[ch['id']] = re.findall(r'^##\s+(.+?)\s*$', md, flags=re.M)
-    n_ch = len(CHAPTERS)
+    n_ch = sum(isinstance(ch['number'], int) for ch in CHAPTERS)   # 부록은 장 수에서 뺀다
+    n_app = len(CHAPTERS) - n_ch
     # (변경) 이론 과정은 노트북 대신 슬라이드 그림 수를 세므로 세는 항목과 이름을 course.json에서 받는다
     count_key = CONFIG.get('count_key', 'notebooks')
     count_label = CONFIG.get('count_label', '실습 노트북')
@@ -157,13 +172,13 @@ def build_index(default_content):
     other = CONFIG.get('other_course')
 
     stats = ''.join(f'<div class="stat"><b>{v}</b><span>{escape(k)}</span></div>'
-                    for v, k in [(n_ch, '전체 학습 장'), (n_nb, count_label), (n_sec, '세부 절 합계')])
+                    for v, k in [(n_ch, '전체 학습 장')] + ([(n_app, '부록')] if n_app else []) + [(n_nb, count_label), (n_sec, '세부 절 합계')])
     intro = (f'<p>{escape(CONFIG["site_description"])}</p><div class="stats">{stats}</div>'
              f'<h3>전체 학습의 최종 목적</h3>{MARKDOWN(CONFIG["goal"])}')
 
     lanes = []
     for i, lane in enumerate(CONFIG['lanes']):
-        items = ' → '.join(f'<a href="{escape(by_no[n]["file"])}">{n:02d} {escape(by_no[n]["title"])}</a>' for n in lane['chapters'])
+        items = ' → '.join(f'<a href="{escape(by_no[n]["file"])}">{no_text(n)} {escape(by_no[n]["title"])}</a>' for n in lane['chapters'])
         if i:
             lanes.append('<div class="down" aria-hidden="true">↓</div>')
         lanes.append(f'<div class="step lane"><span class="lane-label">{escape(lane["label"])}</span>'
@@ -188,13 +203,13 @@ def build_index(default_content):
         items = ''.join(f'<li><span class="n">{i:02d}</span>{escape(t)}</li>' for i, t in enumerate(secs))
         tags = ' · '.join(escape(t) for t in ch.get('tags', []))
         cards.append(
-            f'<article class="course-card"><div class="card-top"><span class="card-no">{ch["number"]:02d}</span>'
-            f'<span class="card-meta">CHAPTER {ch["number"]:02d} · {escape(ch.get("level", ""))}</span></div>'
+            f'<article class="course-card"><div class="card-top"><span class="card-no">{no_text(ch)}</span>'
+            f'<span class="card-meta">{ch_kicker(ch)} · {escape(ch.get("level", ""))}</span></div>'
             f'<h3>{escape(ch["title"])}</h3><p>{escape(ch["subtitle"])}</p><p class="tools">{tags}</p>'
             f'<p class="outcome"><b>{outcome_label}</b> {escape(ch.get("outcome", ""))}</p>'
             f'<details><summary>세부 목차 펼쳐보기 · 00–{len(secs) - 1:02d}절 · {len(secs)}개 절 · {count_unit} {ch.get(count_key, 0)}개</summary>'
             f'<ol class="subtoc">{items}</ol></details>'
-            f'<a class="start" href="{escape(ch["file"])}">제{ch["number"]:02d}장 학습 시작 ↗</a></article>')
+            f'<a class="start" href="{escape(ch["file"])}">{ch_name(ch)} 학습 시작 ↗</a></article>')
     chapters = (f'<p>각 장의 학습 목적, 주요 도구, {outcome_label}을 비교할 수 있습니다. 세부 목차는 실제 장 원고(<code>content/chNN.md</code>)의 절 제목과 순서를 그대로 반영합니다.</p>'
                 '<div class="card-grid">' + ''.join(cards) + '</div>')
 
@@ -208,7 +223,7 @@ def build_index(default_content):
     content = ''.join(f'<section class="section" id="{sid}"><h2><span class="num">{i:02d}</span>{escape(t)}</h2>{body}</section>'
                       for i, (sid, t, body) in enumerate(sections))
     # (변경) 마지막 칩(도구 표시)은 course.json의 tool_chip으로 바꿀 수 있다
-    chips = [f'총 {n_ch}장', f'{count_unit} {n_nb}개', f'세부 절 {n_sec}개', CONFIG.get('tool_chip', 'PyTorch · Jupyter')]
+    chips = [f'총 {n_ch}장' + (f' + 부록 {n_app}' if n_app else ''), f'{count_unit} {n_nb}개', f'세부 절 {n_sec}개', CONFIG.get('tool_chip', 'PyTorch · Jupyter')]
     return content, chips
 
 
@@ -239,11 +254,11 @@ def build():
             raise ValueError('잘못된 본문 파일 경로: '+ch['source'])
         body,n=render_markdown_sections(source.read_text(encoding='utf-8'))
         if not n: raise ValueError('본문 절이 없습니다: '+ch['source'])
-        html_page=page(f"제{ch['number']:02d}장 · {ch['title']}",f"{CONFIG['course_code']} · CHAPTER {ch['number']:02d}",ch['subtitle'],ch.get('tags',[]),body,ch['id'])
+        html_page=page(f"{ch_name(ch)} · {ch['title']}",f"{CONFIG['course_code']} · {ch_kicker(ch)}",ch['subtitle'],ch.get('tags',[]),body,ch['id'])
         (OUT/ch['file']).write_text(html_page,encoding='utf-8')
         expected.add(ch['file'])
-        cards.append(f'<a class="chapter-card" href="{escape(ch["file"])}"><span>CHAPTER {ch["number"]:02d}</span><b>{escape(ch["title"])}</b><span>{escape(ch["subtitle"])}</span></a>')
-    roadmap='<div class="flow">'+''.join(('<div class="down">↓</div>' if i else '')+f'<div class="step"><strong>{ch["number"]:02d} · {escape(ch["title"])}</strong> — {escape(ch["subtitle"])}</div>' for i,ch in enumerate(CHAPTERS))+'</div>'
+        cards.append(f'<a class="chapter-card" href="{escape(ch["file"])}"><span>{ch_kicker(ch)}</span><b>{escape(ch["title"])}</b><span>{escape(ch["subtitle"])}</span></a>')
+    roadmap='<div class="flow">'+''.join(('<div class="down">↓</div>' if i else '')+f'<div class="step"><strong>{no_text(ch)} · {escape(ch["title"])}</strong> — {escape(ch["subtitle"])}</div>' for i,ch in enumerate(CHAPTERS))+'</div>'
     content=f'''<section class="section" id="intro"><h2><span class="num">00</span>과정 개요</h2><p>{escape(CONFIG['site_description'])}</p></section>
 <section class="section" id="roadmap"><h2><span class="num">01</span>전체 학습 테크트리</h2>{roadmap}</section>
 <section class="section" id="chapters"><h2><span class="num">02</span>장별 목차</h2><div class="chapter-grid">{''.join(cards)}</div></section>

@@ -20,8 +20,10 @@
     if (text !== undefined) e.textContent = text;
     return e;
   };
-  const numText = (n) => String(n).padStart(2, "0");
-  const mainCount = pageNames.filter((ch) => !String(ch.number).includes(".")).length;
+  const isNum = (n) => /^\d+(\.\d+)?$/.test(String(n));
+  const numText = (n) => (isNum(n) ? String(n).padStart(2, "0") : String(n));
+  // 부록(번호가 글자인 장)은 장 수에 넣지 않는다
+  const mainCount = pageNames.filter((ch) => isNum(ch.number) && !String(ch.number).includes(".")).length;
   const header = el("div", "course-nav-header");
   header.append(el("span", "", data.short_title || data.title), el("span", "", mainCount + " CHAPTERS"));
   nav.append(header);
@@ -54,7 +56,7 @@
   // 2. 현재 쪽 세부 목차: 절 제목(h2)을 번호·제목으로 나눠 표시하고, 화면에 보이는 절을 강조
   const sections = [...document.querySelectorAll("main section[id]")];
   if (sections.length) {
-    nav.append(el("div", "course-toc-heading", currentChapter ? "제" + numText(currentChapter.number) + "장 세부 목차" : "INDEX 목차"));
+    nav.append(el("div", "course-toc-heading", currentChapter ? (isNum(currentChapter.number) ? "제" + numText(currentChapter.number) + "장" : "부록 " + currentChapter.number) + " 세부 목차" : "INDEX 목차"));
     const sub = el("ol", "toc-sections");
     sections.forEach((sec) => {
       const li = el("li"),

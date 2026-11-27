@@ -28,6 +28,13 @@
         5
       ],
       "caption": "MLP에서 CNN까지"
+    },
+    {
+      "label": "참고",
+      "chapters": [
+        "A"
+      ],
+      "caption": "새 문제에서 출력층·Loss·Optimizer·Metric을 고르는 순서"
     }
   ],
   "count_key": "labs",
@@ -153,6 +160,25 @@
       "level": "딥러닝",
       "outcome": "CNN을 학습해 MLP와 정확도·파라미터·위치 이동 강건함을 비교하고 특징맵을 해석",
       "labs": 2
+    },
+    {
+      "id": "appA",
+      "number": "A",
+      "title": "학습 설정 선택 기준",
+      "nav_title": "학습 설정 선택 기준",
+      "subtitle": "Target 형태 → 문제 유형 → 출력층 → Loss → Optimizer → Metric",
+      "slug": "appA_training_setup_guide",
+      "version": "v01",
+      "source": "content/appA.md",
+      "tags": [
+        "Target",
+        "Loss",
+        "Optimizer",
+        "Metric"
+      ],
+      "level": "참고",
+      "outcome": "정답 y의 모양에서 출발해 출력층·Loss·Optimizer·평가 지표를 고르는 판단 공식",
+      "labs": 0
     }
   ]
 }

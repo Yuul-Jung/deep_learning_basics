@@ -1,0 +1,10 @@
+{
+ "01": "회귀(Regression)       출력 [4, 1]   정답 [4, 1]   torch.float32  MSELoss            Loss 12.0356\n이진분류(Binary)         출력 [4, 1]   정답 [4, 1]   torch.float32  BCEWithLogitsLoss  Loss 0.8264\n다중분류(Multi-class)    출력 [4, 10]  정답 [4]      torch.int64    CrossEntropyLoss   Loss 1.5405\n다중레이블(Multi-label)   출력 [4, 4]   정답 [4, 4]   torch.float32  BCEWithLogitsLoss  Loss 0.6518\n",
+ "02": "CrossEntropyLoss에 [N, 1] 정답      → RuntimeError: 0D or 1D target tensor expected, multi-target not supported\nBCEWithLogitsLoss에 long 정답       → RuntimeError: result type Float can't be cast to the desired output type Long\nBCELoss에 로짓(범위 밖 값)              → RuntimeError: all elements of input should be between 0 and 1\n",
+ "03": "정답 번호 [N] long  : 2.931904\n원핫 [N, 10] float : 2.931904\n",
+ "04": "사람   확률 0.891 → 1\n자동차  확률 0.786 → 1\n강아지  확률 0.142 → 0\n신호등  확률 0.711 → 1\n확률 합: 2.53 (소프트맥스였다면 1)\n",
+ "05": "정답 분포: {0: 95, 1: 5}\nAccuracy 0.95 | 클래스 0 F1 0.974 | 클래스 1 F1 0.000 | Macro F1 0.487\n",
+ "06": "SGD             lr=0.1    momentum=0    weight_decay=0\nSGD + Momentum  lr=0.1    momentum=0.9  weight_decay=0\nAdam            lr=0.001  momentum=-    weight_decay=0\nAdamW           lr=0.001  momentum=-    weight_decay=0.01\n",
+ "07": "전체 70,000 → Train 56,000 + Test 14,000\nTrain 56,000 → 실제 학습 44,800 (64%) + Validation 11,200 (16%)\n",
+ "_figures": {}
+}

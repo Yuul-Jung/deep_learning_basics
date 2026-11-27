@@ -20,3 +20,4 @@
 4. 원본 실습 밖의 확인 코드는 `code/chNN_extra_checks.py`에 두고 본문에 "추가 확인"으로 밝힌다.
 5. 그림은 `tools/make_figures_chNN.py`가 만드는 SVG가 원본이다. 그림을 고치면 스크립트를 고친다.
 6. 원본 자료와 달라진 점은 장 끝 "원본 자료와 달라진 점" 표에 적는다.
+7. 부록은 `content_src/appX.md`, 확인 코드는 `code/appX_extra_checks.py`, 그림은 `tools/make_figures_appX.py`로 둔다. course.json의 number에 글자("A")를 쓰면 부록으로 표시된다.

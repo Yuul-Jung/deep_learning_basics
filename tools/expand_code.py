@@ -41,7 +41,7 @@ def expand(m):
     return s
 
 
-for src in sorted((ROOT / 'content_src').glob('ch*.md')):
+for src in sorted((ROOT / 'content_src').glob('*.md')):   # chNN.md와 부록 appX.md
     text = re.sub(r'^⟪code:([A-Za-z0-9_]+):(\d\d)⟫$', expand, src.read_text(encoding='utf-8'), flags=re.M)
     (ROOT / 'content' / src.name).write_text(text, encoding='utf-8')
     print('펼침:', src.name, '→ content/' + src.name)
