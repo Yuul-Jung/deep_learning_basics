@@ -1,0 +1,55 @@
+{
+ "01": "데이터 폴더: data\n모델 폴더  : models\n이미지 폴더: png\n",
+ "02": "",
+ "03": "사용 장치: cpu\n",
+ "04": "Batch Size: 128\nEpoch: 10\nLearning Rate: 0.001\n",
+ "05": "",
+ "06": "학습 데이터: 55000\n검증 데이터: 5000\n테스트 데이터: 10000\n",
+ "07": "배치 이미지 Shape: torch.Size([128, 1, 28, 28])\n배치 정답 Shape: torch.Size([128])\n\n표시된 이미지의 실제 클래스\n0: 티셔츠\n1: 셔츠\n2: 운동화\n3: 셔츠\n4: 바지\n5: 원피스\n6: 풀오버\n7: 셔츠\n8: 코트\n9: 바지\n",
+ "08": "Sequential(\n  (0): Conv2d(1, 8, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))\n  (1): ReLU()\n  (2): MaxPool2d(kernel_size=2, stride=2, padding=0, dilation=1, ceil_mode=False)\n  (3): Conv2d(8, 16, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))\n  (4): ReLU()\n  (5): MaxPool2d(kernel_size=2, stride=2, padding=0, dilation=1, ceil_mode=False)\n  (6): Flatten(start_dim=1, end_dim=-1)\n  (7): Linear(in_features=784, out_features=10, bias=True)\n)\n",
+ "09": "Input   : torch.Size([4, 1, 28, 28])\n",
+ "10": "Conv1   : torch.Size([4, 8, 28, 28])\nReLU1   : torch.Size([4, 8, 28, 28])\nPool1   : torch.Size([4, 8, 14, 14])\nConv2   : torch.Size([4, 16, 14, 14])\nReLU2   : torch.Size([4, 16, 14, 14])\nPool2   : torch.Size([4, 16, 7, 7])\nFlatten : torch.Size([4, 784])\nLinear  : torch.Size([4, 10])\n",
+ "11": "\nCNN 학습 파라미터 수: 9,098개\n이전 MLP 학습 파라미터 수: 235,146개\n",
+ "12": "",
+ "13": "",
+ "14": "",
+ "15": "",
+ "16": "Epoch  1/10 | Train Loss 0.7279 | Train Accuracy 0.7469 | Validation Loss 0.4958 | Validation Accuracy 0.8270\nEpoch  2/10 | Train Loss 0.4389 | Train Accuracy 0.8440 | Validation Loss 0.4355 | Validation Accuracy 0.8458\nEpoch  3/10 | Train Loss 0.3844 | Train Accuracy 0.8644 | Validation Loss 0.3970 | Validation Accuracy 0.8610\nEpoch  4/10 | Train Loss 0.3578 | Train Accuracy 0.8732 | Validation Loss 0.3826 | Validation Accuracy 0.8664\nEpoch  5/10 | Train Loss 0.3380 | Train Accuracy 0.8793 | Validation Loss 0.3787 | Validation Accuracy 0.8626\nEpoch  6/10 | Train Loss 0.3231 | Train Accuracy 0.8843 | Validation Loss 0.3610 | Validation Accuracy 0.8722\nEpoch  7/10 | Train Loss 0.3133 | Train Accuracy 0.8872 | Validation Loss 0.3335 | Validation Accuracy 0.8814\nEpoch  8/10 | Train Loss 0.3008 | Train Accuracy 0.8927 | Validation Loss 0.3383 | Validation Accuracy 0.8782\nEpoch  9/10 | Train Loss 0.2921 | Train Accuracy 0.8949 | Validation Loss 0.3314 | Validation Accuracy 0.8856\nEpoch 10/10 | Train Loss 0.2860 | Train Accuracy 0.8971 | Validation Loss 0.3223 | Validation Accuracy 0.8854\n",
+ "17": "\n최고 검증 Epoch: 9\n최고 검증 정확도: 0.8856\n",
+ "18": "",
+ "19": "",
+ "20": "테스트 손실: 0.3302\n테스트 정확도: 0.8833\n맞힌 이미지 수: 8,833 / 10,000\n",
+ "21": "전체 이미지 Shape: torch.Size([10000, 1, 28, 28])\n전체 예측 Shape: torch.Size([10000])\n",
+ "22": "",
+ "23": "",
+ "24": "",
+ "25": "0: 티셔츠    | 0.9010\n1: 바지     | 0.9750\n2: 풀오버    | 0.8230\n3: 원피스    | 0.8990\n4: 코트     | 0.8350\n5: 샌들     | 0.9690\n6: 셔츠     | 0.5680\n7: 운동화    | 0.9790\n8: 가방     | 0.9710\n9: 앵클부츠   | 0.9130\n\n가장 낮은 정확도의 의류: 셔츠\n",
+ "26": "",
+ "27": "실제 셔츠 → 예측 티셔츠: 224개\n",
+ "28": "대표 오답\n",
+ "29": " 0 | A:운동화    | P:샌들     | C:0.825\n 1 | A:앵클부츠   | P:샌들     | C:0.999\n 2 | A:코트     | P:풀오버    | C:0.657\n 3 | A:셔츠     | P:티셔츠    | C:0.913\n 4 | A:원피스    | P:티셔츠    | C:0.472\n 5 | A:풀오버    | P:셔츠     | C:0.762\n 6 | A:코트     | P:풀오버    | C:0.389\n 7 | A:원피스    | P:코트     | C:0.639\n 8 | A:앵클부츠   | P:운동화    | C:0.968\n 9 | A:셔츠     | P:풀오버    | C:0.466\n10 | A:앵클부츠   | P:운동화    | C:0.928\n11 | A:셔츠     | P:코트     | C:0.581\n",
+ "30": "",
+ "31": "원본 정확도: 0.8833\n",
+ "32": "2픽셀 이동 정확도: 0.7471\n정확도 감소: 0.1362\n예측 클래스 변경 비율: 0.2164\n",
+ "33": "저장 파일: models/ch05_1_best_fashion_mnist_cnn.pt\n저장된 검증 정확도: 0.8856\n저장된 테스트 정확도: 0.8833\n",
+ "_figures": {
+  "07": [
+   "ch05_1_fashion_mnist_cnn_training_evaluation_07_1"
+  ],
+  "18": [
+   "ch05_1_fashion_mnist_cnn_training_evaluation_18_1"
+  ],
+  "19": [
+   "ch05_1_fashion_mnist_cnn_training_evaluation_19_1"
+  ],
+  "24": [
+   "ch05_1_fashion_mnist_cnn_training_evaluation_24_1"
+  ],
+  "26": [
+   "ch05_1_fashion_mnist_cnn_training_evaluation_26_1"
+  ],
+  "28": [
+   "ch05_1_fashion_mnist_cnn_training_evaluation_28_1"
+  ]
+ }
+}

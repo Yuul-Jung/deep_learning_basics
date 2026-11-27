@@ -24,9 +24,10 @@
     {
       "label": "딥러닝",
       "chapters": [
-        4
+        4,
+        5
       ],
-      "caption": "MLP·배치·검증·과적합"
+      "caption": "MLP에서 CNN까지"
     }
   ],
   "count_key": "labs",
@@ -133,6 +134,25 @@
       "level": "딥러닝",
       "outcome": "MNIST·Fashion-MNIST를 MLP로 학습·검증·평가하고 오답과 한계를 분석",
       "labs": 6
+    },
+    {
+      "id": "ch05",
+      "number": 5,
+      "title": "합성곱 신경망(CNN)",
+      "nav_title": "CNN",
+      "subtitle": "합성곱·풀링·패딩 → 채널과 CNN 구조 → Fashion-MNIST CNN과 MLP 비교 → 필터·특징맵 시각화",
+      "slug": "ch05_cnn",
+      "version": "v01",
+      "source": "content/ch05.md",
+      "tags": [
+        "Conv2d",
+        "MaxPool2d",
+        "Feature Map",
+        "Fashion-MNIST"
+      ],
+      "level": "딥러닝",
+      "outcome": "CNN을 학습해 MLP와 정확도·파라미터·위치 이동 강건함을 비교하고 특징맵을 해석",
+      "labs": 2
     }
   ]
 }
