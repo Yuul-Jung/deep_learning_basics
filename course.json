@@ -12,6 +12,13 @@
         1
       ],
       "caption": "배열·텐서·자동 미분"
+    },
+    {
+      "label": "학습의 뼈대",
+      "chapters": [
+        2
+      ],
+      "caption": "가설·손실·경사하강법"
     }
   ],
   "count_key": "labs",
@@ -61,6 +68,25 @@
       "level": "바탕",
       "outcome": "배열·텐서를 만들고 모양·연산·변환·자동 미분을 직접 확인",
       "labs": 3
+    },
+    {
+      "id": "ch02",
+      "number": 2,
+      "title": "선형회귀",
+      "nav_title": "선형회귀",
+      "subtitle": "가설과 손실 → 경사하강법 → 실제 데이터 → 여러 입력과 행렬",
+      "slug": "ch02_linear_regression",
+      "version": "v01",
+      "source": "content/ch02.md",
+      "tags": [
+        "MSE",
+        "Gradient Descent",
+        "nn.Linear",
+        "표준화"
+      ],
+      "level": "뼈대",
+      "outcome": "가설·손실·경사하강법으로 직선을 학습하고 MAE·RMSE·R²로 평가",
+      "labs": 6
     }
   ]
 }

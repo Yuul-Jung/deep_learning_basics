@@ -1,10 +1,11 @@
 {
  "01": "NumPy version : 2.5.3\nPyTorch version: 2.15.0+cpu\n",
  "02": "NumPy 배열 : [1. 2. 3. 4.]\nPyTorch 텐서: tensor([1., 2., 3., 4.])\nNumPy 자료형 : float32\nPyTorch 자료형: torch.float32\n",
- "03": "[NumPy]\n더하기 : [11. 12. 13. 14.]\n곱하기 : [2. 4. 6. 8.]\n합계 : 10.0\n평균 : 2.5\n\n[PyTorch]\n더하기 : tensor([11., 12., 13., 14.])\n곱하기 : tensor([2., 4., 6., 8.])\n합계 : tensor(10.)\n평균 : tensor(2.5000)\n",
+ "03": "[NumPy]\n더하기 : [11. 12. 13. 14.]\n곱하기 : [2. 4. 6. 8.]\n합계   : 10.0\n평균   : 2.5\n\n[PyTorch]\n더하기 : tensor([11., 12., 13., 14.])\n곱하기 : tensor([2., 4., 6., 8.])\n합계   : tensor(10.)\n평균   : tensor(2.5000)\n",
  "04": "NumPy shape : (2, 3)\nPyTorch shape: torch.Size([2, 3])\nNumPy 값 : 2\nPyTorch 값: tensor(2)\n\nNumPy reshape\n[[1 2]\n [3 4]\n [5 6]]\n\nPyTorch reshape\ntensor([[1, 2],\n        [3, 4],\n        [5, 6]])\n",
  "05": "NumPy 원소별 곱셈\n[[ 5 12]\n [21 32]]\n\nPyTorch 원소별 곱셈\ntensor([[ 5, 12],\n        [21, 32]])\n\nNumPy 행렬곱\n[[19 22]\n [43 50]]\n\nPyTorch 행렬곱\ntensor([[19, 22],\n        [43, 50]])\n",
  "06": "원본 NumPy : [10. 20. 30.]\nPyTorch 변환: tensor([10., 20., 30.])\n다시 NumPy : [10. 20. 30.]\n",
  "07": "x = 3.0\ny = 15.0\ndy/dx = 8.0\n",
- "08": "NumPy 결과 : [0.         0.33333334 0.6666667  1.        ]\nPyTorch 결과: tensor([0.0000, 0.3333, 0.6667, 1.0000])\n결과 일치: True\n"
+ "08": "NumPy 결과 : [0.         0.33333334 0.6666667  1.        ]\nPyTorch 결과: tensor([0.0000, 0.3333, 0.6667, 1.0000])\n결과 일치: True\n",
+ "_figures": {}
 }

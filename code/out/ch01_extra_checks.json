@@ -1,5 +1,6 @@
 {
  "01": "arr          : [100.   2.   3.]\ntorch.tensor : tensor([1., 2., 3.])\nfrom_numpy   : tensor([100.,   2.,   3.])\nt_copy.numpy(): [ 1. -1.  3.]\n",
  "02": "NumPy 기본       : float64\nPyTorch 기본     : torch.float32\nfrom_numpy(float64): torch.float64\nfloat32 로 맞추기 : torch.float32\n",
- "03": "평균      : 0.006\n표준편차  : 1.004\n"
+ "03": "평균      : 0.006\n표준편차  : 1.004\n",
+ "_figures": {}
 }

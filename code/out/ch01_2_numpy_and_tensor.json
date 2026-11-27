@@ -1,6 +1,6 @@
 {
  "01": "",
- "02": "Python 리스트 + : [1, 2, 3, 10, 20, 30]\nNumPy 배열 +   : [11 22 33]\n",
+ "02": "Python 리스트 + : [1, 2, 3, 10, 20, 30]\nNumPy 배열 +    : [11 22 33]\n",
  "03": "Scalar → ndim: 0 , shape: ()\nVector → ndim: 1 , shape: (3,)\nMatrix → ndim: 2 , shape: (2, 2)\n",
  "04": "[[22.5   0.1 ]\n [31.    0.45]\n [36.    0.9 ]]\n차원 수: 2\nshape: (3, 2)\n자료형: float32\n",
  "05": "첫 번째 측정 데이터: [22.5  0.1]\n모든 온도값: [22.5 31.  36. ]\n모든 진동값: [0.1  0.45 0.9 ]\n두 번째 온도값: 31.0\n",
@@ -8,5 +8,6 @@
  "07": "보정 전: [22.5 31.  36. ]\n보정 후: [24.  32.5 37.5]\n",
  "08": "tensor([[22.5000,  0.1000],\n        [31.0000,  0.4500],\n        [36.0000,  0.9000]])\n자료형: <class 'torch.Tensor'>\ndim: 2\nshape: torch.Size([3, 2])\ndtype: torch.float32\n",
  "09": "NumPy ndim : 2\nTensor dim : 2\nNumPy shape: (3, 2)\nTensor shape: torch.Size([3, 2])\nTensor device: cpu\n",
- "10": "센서 데이터:\ntensor([[24.0000,  0.2000],\n        [34.0000,  0.5500],\n        [38.0000,  0.8500]])\n\n점검 필요 여부:\ntensor([False, False,  True])\n\n점검이 필요한 데이터:\ntensor([[38.0000,  0.8500]])\n"
+ "10": "센서 데이터:\ntensor([[24.0000,  0.2000],\n        [34.0000,  0.5500],\n        [38.0000,  0.8500]])\n\n점검 필요 여부:\ntensor([False, False,  True])\n\n점검이 필요한 데이터:\ntensor([[38.0000,  0.8500]])\n",
+ "_figures": {}
 }

@@ -1,0 +1,10 @@
+{
+ "01": "x_train:\ntensor([[1.],\n        [2.],\n        [3.]])\nshape: torch.Size([3, 1])\n\ny_train:\ntensor([[1.],\n        [2.],\n        [3.]])\nshape: torch.Size([3, 1])\n",
+ "02": "LinearRegressionModel(\n  (linear): Linear(in_features=1, out_features=1, bias=True)\n)\n",
+ "03": "초기 W: 0.7645385265350342\n초기 b: 0.8300079107284546\n\nlinear.weight torch.Size([1, 1])\nlinear.bias torch.Size([1])\n",
+ "04": "",
+ "05": "학습된 W: 0.9972065091133118\n학습된 b: 0.006350173614919186\nLoss 변화: 0.16590343415737152 → 5.812582912767539e-06\n",
+ "06": "새 입력:\ntensor([2.5000, 5.0000])\n\n예측값:\ntensor([2.4994, 4.9924])\n",
+ "07": "센서 W: 19.999967575073242\n센서 b: 1.0000410079956055\nLoss 변화: 701.9591674804688 → 3.1377567211166024e-10\n1.25 V 보정값: 26.0\n",
+ "_figures": {}
+}

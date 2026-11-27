@@ -35,6 +35,9 @@ def expand(m):
     s = (f'코드 박스: code/{name}.py · CODE {no} · 실행 확인\n\n```python\n{code}\n```\n')
     if out.strip():
         s += f'\n실행 결과: CODE {no} · {ENV["label"]}\n\n```text\n{out}\n```\n'
+    figs = json.loads((ROOT / 'code/out' / f'{name}.json').read_text(encoding='utf-8')).get('_figures', {}).get(no, [])
+    for k, f in enumerate(figs, 1):
+        s += f'\n⟪fig:{f}|실행 결과 그림 · {name} CODE {no}' + (f' ({k})' if len(figs) > 1 else '') + '⟫\n'
     return s
 
 

@@ -921,6 +921,7 @@ mtd[columnalign="right"] {
 <p>먼저 두 라이브러리를 불러오고 버전을 확인합니다. 관례대로 NumPy는 <code>np</code>, PyTorch는 <code>torch</code>라는 이름으로 씁니다.</p>
 <div class="codeblock"><div class="codebar"><span>PYTHON · code/ch01_1_numpy_torch.py · CODE 01 · 실행 확인</span></div><pre class="src"><code>import numpy as np
 import torch
+
 print(&quot;NumPy version :&quot;, np.__version__)
 print(&quot;PyTorch version:&quot;, torch.__version__)
 </code></pre></div>
@@ -935,10 +936,13 @@ PyTorch version: 2.15.0+cpu
 </ul>
 <div class="codeblock"><div class="codebar"><span>PYTHON · code/ch01_1_numpy_torch.py · CODE 02 · 실행 확인</span></div><pre class="src"><code># 같은 데이터를 NumPy 배열과 PyTorch 텐서로 만듭니다.
 numbers = [1, 2, 3, 4]
+
 np_array = np.array(numbers, dtype=np.float32)
 torch_tensor = torch.tensor(numbers, dtype=torch.float32)
+
 print(&quot;NumPy 배열 :&quot;, np_array)
 print(&quot;PyTorch 텐서:&quot;, torch_tensor)
+
 print(&quot;NumPy 자료형 :&quot;, np_array.dtype)
 print(&quot;PyTorch 자료형:&quot;, torch_tensor.dtype)
 </code></pre></div>
@@ -958,25 +962,26 @@ PyTorch 자료형: torch.float32
 print(&quot;[NumPy]&quot;)
 print(&quot;더하기 :&quot;, np_array + 10)
 print(&quot;곱하기 :&quot;, np_array * 2)
-print(&quot;합계 :&quot;, np_array.sum())
-print(&quot;평균 :&quot;, np_array.mean())
+print(&quot;합계   :&quot;, np_array.sum())
+print(&quot;평균   :&quot;, np_array.mean())
+
 print(&quot;\n[PyTorch]&quot;)
 print(&quot;더하기 :&quot;, torch_tensor + 10)
 print(&quot;곱하기 :&quot;, torch_tensor * 2)
-print(&quot;합계 :&quot;, torch_tensor.sum())
-print(&quot;평균 :&quot;, torch_tensor.mean())
+print(&quot;합계   :&quot;, torch_tensor.sum())
+print(&quot;평균   :&quot;, torch_tensor.mean())
 </code></pre></div>
 <div class="outputblock"><div class="codebar"><span>OUTPUT · CODE 03 · Python 3.13.18 · NumPy 2.5.3 · PyTorch 2.15.0+cpu(CPU)에서 실행</span></div><pre>[NumPy]
 더하기 : [11. 12. 13. 14.]
 곱하기 : [2. 4. 6. 8.]
-합계 : 10.0
-평균 : 2.5
+합계   : 10.0
+평균   : 2.5
 
 [PyTorch]
 더하기 : tensor([11., 12., 13., 14.])
 곱하기 : tensor([2., 4., 6., 8.])
-합계 : tensor(10.)
-평균 : tensor(2.5000)
+합계   : tensor(10.)
+평균   : tensor(2.5000)
 </pre></div>
 <div class="explain"><p class="box-title">코드 풀이</p>
 <ul>
@@ -992,16 +997,21 @@ print(&quot;평균 :&quot;, torch_tensor.mean())
 <div class="codeblock"><div class="codebar"><span>PYTHON · code/ch01_1_numpy_torch.py · CODE 04 · 실행 확인</span></div><pre class="src"><code># 2행 3열 데이터
 data = [[1, 2, 3],
         [4, 5, 6]]
+
 np_matrix = np.array(data)
 torch_matrix = torch.tensor(data)
+
 print(&quot;NumPy shape :&quot;, np_matrix.shape)
 print(&quot;PyTorch shape:&quot;, torch_matrix.shape)
+
 # 첫 번째 행, 두 번째 열의 값
 print(&quot;NumPy 값 :&quot;, np_matrix[0, 1])
 print(&quot;PyTorch 값:&quot;, torch_matrix[0, 1])
+
 # 2행 3열을 3행 2열로 변경
 print(&quot;\nNumPy reshape&quot;)
 print(np_matrix.reshape(3, 2))
+
 print(&quot;\nPyTorch reshape&quot;)
 print(torch_matrix.reshape(3, 2))
 </code></pre></div>
@@ -1035,18 +1045,24 @@ tensor([[1, 2],
 <figure class="figure-wrap" tabindex="0"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 290" width="760" height="290" role="img" aria-labelledby="ch01_mul-t ch01_mul-d" font-family="IBM Plex Sans KR, Apple SD Gothic Neo, Malgun Gothic, sans-serif"><title id="ch01_mul-t">원소별 곱셈과 행렬곱</title><desc id="ch01_mul-d">[[1,2],[3,4]] 과 [[5,6],[7,8]] 의 원소별 곱은 [[5,12],[21,32]], 행렬곱은 [[19,22],[43,50]]</desc><defs><marker id="ah-ch01_mul" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#15171C"/></marker></defs><rect x="0" y="0" width="760" height="290" fill="#FFFFFF"/><text x="380" y="28" font-size="16" font-weight="600" fill="#15171C" text-anchor="middle">* 는 같은 자리끼리, @ 는 행 × 열</text><text x="190" y="62" font-size="14" font-weight="700" fill="#1F7A8C" text-anchor="middle">원소별 곱셈  a * b</text><rect x="40" y="84" width="34" height="34" fill="#FFFFFF" stroke="#15171C" stroke-width="1.2"/><text x="57.0" y="106.0" font-size="14" font-weight="400" fill="#15171C" text-anchor="middle" font-family="IBM Plex Mono, Consolas, monospace">1</text><rect x="74" y="84" width="34" height="34" fill="#FFD24A" stroke="#15171C" stroke-width="1.2"/><text x="91.0" y="106.0" font-size="14" font-weight="400" fill="#15171C" text-anchor="middle" font-family="IBM Plex Mono, Consolas, monospace">2</text><rect x="40" y="118" width="34" height="34" fill="#FFFFFF" stroke="#15171C" stroke-width="1.2"/><text x="57.0" y="140.0" font-size="14" font-weight="400" fill="#15171C" text-anchor="middle" font-family="IBM Plex Mono, Consolas, monospace">3</text><rect x="74" y="118" width="34" height="34" fill="#FFFFFF" stroke="#15171C" stroke-width="1.2"/><text x="91.0" y="140.0" font-size="14" font-weight="400" fill="#15171C" text-anchor="middle" font-family="IBM Plex Mono, Consolas, monospace">4</text><text x="126" y="124" font-size="20" font-weight="700" fill="#15171C" text-anchor="middle">*</text><rect x="146" y="84" width="34" height="34" fill="#FFFFFF" stroke="#15171C" stroke-width="1.2"/><text x="163.0" y="106.0" font-size="14" font-weight="400" fill="#15171C" text-anchor="middle" font-family="IBM Plex Mono, Consolas, monospace">5</text><rect x="180" y="84" width="34" height="34" fill="#FFD24A" stroke="#15171C" stroke-width="1.2"/><text x="197.0" y="106.0" font-size="14" font-weight="400" fill="#15171C" text-anchor="middle" font-family="IBM Plex Mono, Consolas, monospace">6</text><rect x="146" y="118" width="34" height="34" fill="#FFFFFF" stroke="#15171C" stroke-width="1.2"/><text x="163.0" y="140.0" font-size="14" font-weight="400" fill="#15171C" text-anchor="middle" font-family="IBM Plex Mono, Consolas, monospace">7</text><rect x="180" y="118" width="34" height="34" fill="#FFFFFF" stroke="#15171C" stroke-width="1.2"/><text x="197.0" y="140.0" font-size="14" font-weight="400" fill="#15171C" text-anchor="middle" font-family="IBM Plex Mono, Consolas, monospace">8</text><text x="232" y="124" font-size="20" font-weight="700" fill="#15171C" text-anchor="middle">=</text><rect x="252" y="84" width="34" height="34" fill="#FFFFFF" stroke="#15171C" stroke-width="1.2"/><text x="269.0" y="106.0" font-size="14" font-weight="400" fill="#15171C" text-anchor="middle" font-family="IBM Plex Mono, Consolas, monospace">5</text><rect x="286" y="84" width="34" height="34" fill="#FFD24A" stroke="#15171C" stroke-width="1.2"/><text x="303.0" y="106.0" font-size="14" font-weight="400" fill="#15171C" text-anchor="middle" font-family="IBM Plex Mono, Consolas, monospace">12</text><rect x="252" y="118" width="34" height="34" fill="#FFFFFF" stroke="#15171C" stroke-width="1.2"/><text x="269.0" y="140.0" font-size="14" font-weight="400" fill="#15171C" text-anchor="middle" font-family="IBM Plex Mono, Consolas, monospace">21</text><rect x="286" y="118" width="34" height="34" fill="#FFFFFF" stroke="#15171C" stroke-width="1.2"/><text x="303.0" y="140.0" font-size="14" font-weight="400" fill="#15171C" text-anchor="middle" font-family="IBM Plex Mono, Consolas, monospace">32</text><text x="190" y="186" font-size="13" font-weight="400" fill="#15171C" text-anchor="middle">노란 칸: 2 × 6 = 12</text><text x="190" y="208" font-size="12.5" font-weight="400" fill="#4A4F5A" text-anchor="middle">모양이 같은 두 배열의 같은 위치끼리 곱함</text><text x="570" y="62" font-size="14" font-weight="700" fill="#4635B1" text-anchor="middle">행렬곱  a @ b</text><rect x="420" y="84" width="34" height="34" fill="#FFD24A" stroke="#15171C" stroke-width="1.2"/><text x="437.0" y="106.0" font-size="14" font-weight="400" fill="#15171C" text-anchor="middle" font-family="IBM Plex Mono, Consolas, monospace">1</text><rect x="454" y="84" width="34" height="34" fill="#FFD24A" stroke="#15171C" stroke-width="1.2"/><text x="471.0" y="106.0" font-size="14" font-weight="400" fill="#15171C" text-anchor="middle" font-family="IBM Plex Mono, Consolas, monospace">2</text><rect x="420" y="118" width="34" height="34" fill="#FFFFFF" stroke="#15171C" stroke-width="1.2"/><text x="437.0" y="140.0" font-size="14" font-weight="400" fill="#15171C" text-anchor="middle" font-family="IBM Plex Mono, Consolas, monospace">3</text><rect x="454" y="118" width="34" height="34" fill="#FFFFFF" stroke="#15171C" stroke-width="1.2"/><text x="471.0" y="140.0" font-size="14" font-weight="400" fill="#15171C" text-anchor="middle" font-family="IBM Plex Mono, Consolas, monospace">4</text><text x="506" y="124" font-size="18" font-weight="700" fill="#15171C" text-anchor="middle">@</text><rect x="526" y="84" width="34" height="34" fill="#FFD24A" stroke="#15171C" stroke-width="1.2"/><text x="543.0" y="106.0" font-size="14" font-weight="400" fill="#15171C" text-anchor="middle" font-family="IBM Plex Mono, Consolas, monospace">5</text><rect x="560" y="84" width="34" height="34" fill="#FFFFFF" stroke="#15171C" stroke-width="1.2"/><text x="577.0" y="106.0" font-size="14" font-weight="400" fill="#15171C" text-anchor="middle" font-family="IBM Plex Mono, Consolas, monospace">6</text><rect x="526" y="118" width="34" height="34" fill="#FFD24A" stroke="#15171C" stroke-width="1.2"/><text x="543.0" y="140.0" font-size="14" font-weight="400" fill="#15171C" text-anchor="middle" font-family="IBM Plex Mono, Consolas, monospace">7</text><rect x="560" y="118" width="34" height="34" fill="#FFFFFF" stroke="#15171C" stroke-width="1.2"/><text x="577.0" y="140.0" font-size="14" font-weight="400" fill="#15171C" text-anchor="middle" font-family="IBM Plex Mono, Consolas, monospace">8</text><text x="612" y="124" font-size="20" font-weight="700" fill="#15171C" text-anchor="middle">=</text><rect x="632" y="84" width="34" height="34" fill="#FFD24A" stroke="#15171C" stroke-width="1.2"/><text x="649.0" y="106.0" font-size="14" font-weight="400" fill="#15171C" text-anchor="middle" font-family="IBM Plex Mono, Consolas, monospace">19</text><rect x="666" y="84" width="34" height="34" fill="#FFFFFF" stroke="#15171C" stroke-width="1.2"/><text x="683.0" y="106.0" font-size="14" font-weight="400" fill="#15171C" text-anchor="middle" font-family="IBM Plex Mono, Consolas, monospace">22</text><rect x="632" y="118" width="34" height="34" fill="#FFFFFF" stroke="#15171C" stroke-width="1.2"/><text x="649.0" y="140.0" font-size="14" font-weight="400" fill="#15171C" text-anchor="middle" font-family="IBM Plex Mono, Consolas, monospace">43</text><rect x="666" y="118" width="34" height="34" fill="#FFFFFF" stroke="#15171C" stroke-width="1.2"/><text x="683.0" y="140.0" font-size="14" font-weight="400" fill="#15171C" text-anchor="middle" font-family="IBM Plex Mono, Consolas, monospace">50</text><text x="570" y="186" font-size="13" font-weight="400" fill="#15171C" text-anchor="middle">노란 칸: 1×5 + 2×7 = 19</text><text x="570" y="208" font-size="12.5" font-weight="400" fill="#4A4F5A" text-anchor="middle">앞 행렬의 행과 뒤 행렬의 열을 곱해 더함</text><line x1="380" y1="52" x2="380" y2="220" stroke="#9AA0A8" stroke-width="1"/><rect x="120" y="236" width="520" height="40" rx="8" fill="#FBFBF9" stroke="#9AA0A8" stroke-width="1"/><text x="380" y="261" font-size="13" font-weight="500" fill="#15171C" text-anchor="middle">신경망의 한 층 = 입력 X @ 가중치 W + 편향 b  → 2장부터 계속 쓰는 계산</text></svg><figcaption>그림 1-2 · 같은 두 행렬이라도 *와 @의 결과가 다릅니다. 노란 칸은 결과의 한 칸이 어떤 값에서 나오는지 보여 줍니다.</figcaption></figure>
 <div class="codeblock"><div class="codebar"><span>PYTHON · code/ch01_1_numpy_torch.py · CODE 05 · 실행 확인</span></div><pre class="src"><code>a_np = np.array([[1, 2],
                  [3, 4]])
+
 b_np = np.array([[5, 6],
                  [7, 8]])
+
 a_torch = torch.tensor(a_np)
 b_torch = torch.tensor(b_np)
+
 # 원소별 곱셈: 같은 위치의 원소끼리 곱합니다.
 print(&quot;NumPy 원소별 곱셈&quot;)
 print(a_np * b_np)
+
 print(&quot;\nPyTorch 원소별 곱셈&quot;)
 print(a_torch * b_torch)
+
 # 행렬곱: 행과 열을 곱하여 새로운 행렬을 만듭니다.
 print(&quot;\nNumPy 행렬곱&quot;)
 print(a_np @ b_np)
+
 print(&quot;\nPyTorch 행렬곱&quot;)
 print(a_torch @ b_torch)
 </code></pre></div>
@@ -1082,8 +1098,10 @@ tensor([[19, 22],
 <div class="codeblock"><div class="codebar"><span>PYTHON · code/ch01_1_numpy_torch.py · CODE 06 · 실행 확인</span></div><pre class="src"><code># NumPy 배열 → PyTorch 텐서
 np_data = np.array([10, 20, 30], dtype=np.float32)
 tensor_data = torch.tensor(np_data)
+
 # PyTorch 텐서 → NumPy 배열
 back_to_numpy = tensor_data.numpy().copy()
+
 print(&quot;원본 NumPy :&quot;, np_data)
 print(&quot;PyTorch 변환:&quot;, tensor_data)
 print(&quot;다시 NumPy :&quot;, back_to_numpy)
@@ -1126,17 +1144,21 @@ dy/dx = 8.0
 <p>단위가 다른 값을 같은 범위로 맞추면 학습이 안정됩니다. 2장 집값 예측에서는 같은 목적으로 평균 0·표준편차 1로 맞추는 <strong>표준화</strong>를 씁니다.</p>
 <div class="codeblock"><div class="codebar"><span>PYTHON · code/ch01_1_numpy_torch.py · CODE 08 · 실행 확인</span></div><pre class="src"><code># 센서 측정값을 0~1 범위로 변환합니다.
 sensor_values = [20.0, 30.0, 40.0, 50.0]
+
 # NumPy
 np_sensor = np.array(sensor_values, dtype=np.float32)
 np_normalized = (np_sensor - np_sensor.min()) / (np_sensor.max() - np_sensor.min())
+
 # PyTorch
 torch_sensor = torch.tensor(sensor_values, dtype=torch.float32)
 torch_normalized = (
     (torch_sensor - torch_sensor.min())
     / (torch_sensor.max() - torch_sensor.min())
 )
+
 print(&quot;NumPy 결과 :&quot;, np_normalized)
 print(&quot;PyTorch 결과:&quot;, torch_normalized)
+
 # 두 결과가 같은지 확인합니다.
 print(&quot;결과 일치:&quot;, np.allclose(np_normalized, torch_normalized.numpy()))
 </code></pre></div>
@@ -1161,14 +1183,16 @@ import torch
 <div class="codeblock"><div class="codebar"><span>PYTHON · code/ch01_2_numpy_and_tensor.py · CODE 02 · 실행 확인</span></div><pre class="src"><code># Python 리스트
 list_a = [1, 2, 3]
 list_b = [10, 20, 30]
+
 # NumPy 배열
 array_a = np.array([1, 2, 3])
 array_b = np.array([10, 20, 30])
+
 print(&quot;Python 리스트 + :&quot;, list_a + list_b)
-print(&quot;NumPy 배열 +   :&quot;, array_a + array_b)
+print(&quot;NumPy 배열 +    :&quot;, array_a + array_b)
 </code></pre></div>
 <div class="outputblock"><div class="codebar"><span>OUTPUT · CODE 02 · Python 3.13.18 · NumPy 2.5.3 · PyTorch 2.15.0+cpu(CPU)에서 실행</span></div><pre>Python 리스트 + : [1, 2, 3, 10, 20, 30]
-NumPy 배열 +   : [11 22 33]
+NumPy 배열 +    : [11 22 33]
 </pre></div>
 <p>리스트는 여러 종류의 값을 담는 일반 저장 공간이고, 배열은 같은 종류의 숫자를 계산하기 위한 공간입니다. 수치 계산에는 배열을 씁니다.</p>
 </section><section class="section" id="s10"><h2><span class="num">10</span>1-2 차원과 모양: 스칼라·벡터·행렬·텐서</h2><table>
@@ -1210,6 +1234,7 @@ NumPy 배열 +   : [11 22 33]
 <div class="codeblock"><div class="codebar"><span>PYTHON · code/ch01_2_numpy_and_tensor.py · CODE 03 · 실행 확인</span></div><pre class="src"><code>scalar = np.array(7)
 vector = np.array([1, 2, 3])
 matrix = np.array([[1, 2], [3, 4]])
+
 print(&quot;Scalar → ndim:&quot;, scalar.ndim, &quot;, shape:&quot;, scalar.shape)
 print(&quot;Vector → ndim:&quot;, vector.ndim, &quot;, shape:&quot;, vector.shape)
 print(&quot;Matrix → ndim:&quot;, matrix.ndim, &quot;, shape:&quot;, matrix.shape)
@@ -1230,6 +1255,7 @@ Matrix → ndim: 2 , shape: (2, 2)
     ],
     dtype=np.float32,
 )
+
 print(sensor_data)
 print(&quot;차원 수:&quot;, sensor_data.ndim)
 print(&quot;shape:&quot;, sensor_data.shape)
@@ -1279,8 +1305,10 @@ print(&quot;두 번째 온도값:&quot;, sensor_data[1, 0])
 </pre></div>
 <p><strong>Boolean Mask</strong>(불리언 마스크)는 조건의 결과인 <code>True</code>·<code>False</code> 배열로 필요한 값만 고릅니다. 온도가 30℃ 이상인 값만 골라 봅니다.</p>
 <div class="codeblock"><div class="codebar"><span>PYTHON · code/ch01_2_numpy_and_tensor.py · CODE 06 · 실행 확인</span></div><pre class="src"><code>temperatures = sensor_data[:, 0]
+
 high_mask = temperatures &gt;= 30.0
 high_temperatures = temperatures[high_mask]
+
 print(&quot;30℃ 이상 여부:&quot;, high_mask)
 print(&quot;30℃ 이상 온도:&quot;, high_temperatures)
 </code></pre></div>
@@ -1298,6 +1326,7 @@ print(&quot;30℃ 이상 온도:&quot;, high_temperatures)
 <figure class="figure-wrap" tabindex="0"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 190" width="760" height="190" role="img" aria-labelledby="ch01_broadcast-t ch01_broadcast-d" font-family="IBM Plex Sans KR, Apple SD Gothic Neo, Malgun Gothic, sans-serif"><title id="ch01_broadcast-t">브로드캐스팅</title><desc id="ch01_broadcast-d">온도 [22.5, 31, 36] 에 1.5 를 더하면 1.5 가 세 칸으로 늘어난 것처럼 계산되어 [24, 32.5, 37.5] 가 된다</desc><defs><marker id="ah-ch01_broadcast" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#15171C"/></marker></defs><rect x="0" y="0" width="760" height="190" fill="#FFFFFF"/><text x="380" y="28" font-size="16" font-weight="600" fill="#15171C" text-anchor="middle">브로드캐스팅 — 작은 값을 큰 배열 모양에 맞춰 늘린다</text><rect x="40" y="66" width="58" height="58" fill="#FFFFFF" stroke="#15171C" stroke-width="1.2"/><text x="69.0" y="100.0" font-size="14" font-weight="400" fill="#15171C" text-anchor="middle" font-family="IBM Plex Mono, Consolas, monospace">22.5</text><rect x="98" y="66" width="58" height="58" fill="#FFFFFF" stroke="#15171C" stroke-width="1.2"/><text x="127.0" y="100.0" font-size="14" font-weight="400" fill="#15171C" text-anchor="middle" font-family="IBM Plex Mono, Consolas, monospace">31.0</text><rect x="156" y="66" width="58" height="58" fill="#FFFFFF" stroke="#15171C" stroke-width="1.2"/><text x="185.0" y="100.0" font-size="14" font-weight="400" fill="#15171C" text-anchor="middle" font-family="IBM Plex Mono, Consolas, monospace">36.0</text><text x="234" y="100" font-size="22" font-weight="700" fill="#15171C" text-anchor="middle">+</text><rect x="256" y="66" width="58" height="58" fill="#FFD24A" stroke="#15171C" stroke-width="1.2"/><text x="285.0" y="100.0" font-size="14" font-weight="400" fill="#15171C" text-anchor="middle" font-family="IBM Plex Mono, Consolas, monospace">1.5</text><rect x="314" y="66" width="58" height="58" fill="#FFF6D6" stroke="#9AA0A8" stroke-width="1.2"/><text x="343.0" y="100.0" font-size="14" font-weight="400" fill="#15171C" text-anchor="middle" font-family="IBM Plex Mono, Consolas, monospace">1.5</text><rect x="372" y="66" width="58" height="58" fill="#FFF6D6" stroke="#9AA0A8" stroke-width="1.2"/><text x="401.0" y="100.0" font-size="14" font-weight="400" fill="#15171C" text-anchor="middle" font-family="IBM Plex Mono, Consolas, monospace">1.5</text><text x="372" y="146" font-size="12.5" font-weight="400" fill="#4A4F5A" text-anchor="middle">1.5 를 3칸으로 늘린 것처럼 계산</text><text x="450" y="100" font-size="22" font-weight="700" fill="#15171C" text-anchor="middle">=</text><rect x="474" y="66" width="58" height="58" fill="#E3F1F3" stroke="#15171C" stroke-width="1.2"/><text x="503.0" y="100.0" font-size="14" font-weight="400" fill="#15171C" text-anchor="middle" font-family="IBM Plex Mono, Consolas, monospace">24.0</text><rect x="532" y="66" width="58" height="58" fill="#E3F1F3" stroke="#15171C" stroke-width="1.2"/><text x="561.0" y="100.0" font-size="14" font-weight="400" fill="#15171C" text-anchor="middle" font-family="IBM Plex Mono, Consolas, monospace">32.5</text><rect x="590" y="66" width="58" height="58" fill="#E3F1F3" stroke="#15171C" stroke-width="1.2"/><text x="619.0" y="100.0" font-size="14" font-weight="400" fill="#15171C" text-anchor="middle" font-family="IBM Plex Mono, Consolas, monospace">37.5</text><text x="561" y="146" font-size="12.5" font-weight="400" fill="#1F7A8C" text-anchor="middle">보정 후 온도</text><text x="380" y="178" font-size="12.5" font-weight="400" fill="#4A4F5A" text-anchor="middle">실제로 복사본을 만들지는 않는다. 계산할 때만 모양을 맞춘다.</text></svg><figcaption>그림 1-5 · 숫자 1.5가 배열 길이만큼 늘어난 것처럼 계산됩니다.</figcaption></figure>
 <div class="codeblock"><div class="codebar"><span>PYTHON · code/ch01_2_numpy_and_tensor.py · CODE 07 · 실행 확인</span></div><pre class="src"><code>temperature_offset = 1.5
 corrected_temperatures = temperatures + temperature_offset
+
 print(&quot;보정 전:&quot;, temperatures)
 print(&quot;보정 후:&quot;, corrected_temperatures)
 </code></pre></div>
@@ -1307,6 +1336,7 @@ print(&quot;보정 후:&quot;, corrected_temperatures)
 <p>1-1 정규화의 <code>np_sensor - np_sensor.min()</code>, 2장 선형 모델의 <code>X @ W + b</code>에서 편향 <code>b</code>를 더하는 계산이 모두 브로드캐스팅입니다.</p>
 </section><section class="section" id="s13"><h2><span class="num">13</span>1-2 NumPy 배열을 Tensor로: from_numpy와 속성</h2><p><code>torch.from_numpy()</code>로 NumPy 배열을 Tensor로 바꿉니다.</p>
 <div class="codeblock"><div class="codebar"><span>PYTHON · code/ch01_2_numpy_and_tensor.py · CODE 08 · 실행 확인</span></div><pre class="src"><code>sensor_tensor = torch.from_numpy(sensor_data)
+
 print(sensor_tensor)
 print(&quot;자료형:&quot;, type(sensor_tensor))
 print(&quot;dim:&quot;, sensor_tensor.dim())
@@ -1356,8 +1386,10 @@ dtype: torch.float32
 <p>Tensor는 CPU나 GPU에 저장할 수 있으므로 <code>device</code> 속성이 있습니다.</p>
 <div class="codeblock"><div class="codebar"><span>PYTHON · code/ch01_2_numpy_and_tensor.py · CODE 09 · 실행 확인</span></div><pre class="src"><code>print(&quot;NumPy ndim :&quot;, sensor_data.ndim)
 print(&quot;Tensor dim :&quot;, sensor_tensor.dim())
+
 print(&quot;NumPy shape:&quot;, sensor_data.shape)
 print(&quot;Tensor shape:&quot;, sensor_tensor.shape)
+
 print(&quot;Tensor device:&quot;, sensor_tensor.device)
 </code></pre></div>
 <div class="outputblock"><div class="codebar"><span>OUTPUT · CODE 09 · Python 3.13.18 · NumPy 2.5.3 · PyTorch 2.15.0+cpu(CPU)에서 실행</span></div><pre>NumPy ndim : 2
@@ -1379,15 +1411,20 @@ Tensor device: cpu
     ],
     dtype=np.float32,
 )
+
 practice_tensor = torch.from_numpy(practice_data)
+
 temperature_alarm = practice_tensor[:, 0] &gt;= 35.0
 vibration_alarm = practice_tensor[:, 1] &gt;= 0.7
 inspection_required = temperature_alarm &amp; vibration_alarm
+
 print(&quot;센서 데이터:&quot;)
 print(practice_tensor)
+
 print()
 print(&quot;점검 필요 여부:&quot;)
 print(inspection_required)
+
 print()
 print(&quot;점검이 필요한 데이터:&quot;)
 print(practice_tensor[inspection_required])
@@ -1447,18 +1484,23 @@ import torch
 </code></pre></div>
 <div class="codeblock"><div class="codebar"><span>PYTHON · code/ch01_3_tensor_operations.py · CODE 02 · 실행 확인</span></div><pre class="src"><code># 같은 난수 결과를 얻기 위한 기준값
 torch.manual_seed(42)
+
 zeros_tensor = torch.zeros(2, 3)
 ones_tensor = torch.ones(2, 3)
 range_tensor = torch.arange(0, 6).reshape(2, 3)
 random_tensor = torch.rand(2, 3)
+
 print(&quot;zeros:&quot;)
 print(zeros_tensor)
+
 print()
 print(&quot;ones:&quot;)
 print(ones_tensor)
+
 print()
 print(&quot;arange + reshape:&quot;)
 print(range_tensor)
+
 print()
 print(&quot;rand:&quot;)
 print(random_tensor)
@@ -1492,15 +1534,20 @@ print(&quot;표준편차  :&quot;, round(z.std().item(), 3))
 </section><section class="section" id="s16"><h2><span class="num">16</span>1-3 메모리 공유와 복사</h2><p><code>torch.from_numpy()</code>로 만든 Tensor는 원본 배열과 <strong>메모리를 공유</strong>합니다. 배열 값을 바꾸면 Tensor 값도 바뀝니다. 독립된 복사본이 필요하면 <code>clone()</code>을 씁니다.</p>
 <figure class="figure-wrap" tabindex="0"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 280" width="760" height="280" role="img" aria-labelledby="ch01_memory-t ch01_memory-d" font-family="IBM Plex Sans KR, Apple SD Gothic Neo, Malgun Gothic, sans-serif"><title id="ch01_memory-t">메모리 공유와 복사</title><desc id="ch01_memory-d">from_numpy 와 numpy() 는 같은 메모리를 가리켜 한쪽 변경이 다른 쪽에 보이고, torch.tensor·clone·copy 는 새 메모리를 만든다</desc><defs><marker id="ah-ch01_memory" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#15171C"/></marker></defs><rect x="0" y="0" width="760" height="280" fill="#FFFFFF"/><text x="380" y="28" font-size="16" font-weight="600" fill="#15171C" text-anchor="middle">변환할 때 메모리를 함께 쓰는가, 복사하는가</text><rect x="24" y="50" width="348" height="210" rx="8" fill="#FBFBF9" stroke="#9AA0A8" stroke-width="1"/><text x="198" y="76" font-size="13.5" font-weight="700" fill="#B3261E" text-anchor="middle">메모리를 함께 씀 (한쪽을 바꾸면 둘 다 바뀜)</text><rect x="48" y="96" width="120" height="48" rx="8" fill="#E3F1F3" stroke="#1F7A8C" stroke-width="1.5"/><text x="108" y="125" font-size="13" font-weight="600" fill="#1F7A8C" text-anchor="middle" font-family="IBM Plex Mono, Consolas, monospace">numpy_data</text><rect x="228" y="96" width="120" height="48" rx="8" fill="#EDEAFA" stroke="#4635B1" stroke-width="1.5"/><text x="288" y="125" font-size="13" font-weight="600" fill="#4635B1" text-anchor="middle" font-family="IBM Plex Mono, Consolas, monospace">shared_tensor</text><rect x="118" y="182" width="160" height="44" rx="8" fill="#FFFFFF" stroke="#15171C" stroke-width="1.5"/><text x="198" y="209" font-size="12.5" font-weight="500" fill="#15171C" text-anchor="middle" font-family="IBM Plex Mono, Consolas, monospace">[[10, 20], [30, 40]]</text><line x1="108" y1="146" x2="168" y2="180" stroke="#15171C" stroke-width="1.6" marker-end="url(#ah-ch01_memory)"/><line x1="288" y1="146" x2="228" y2="180" stroke="#15171C" stroke-width="1.6" marker-end="url(#ah-ch01_memory)"/><text x="198" y="246" font-size="12.5" font-weight="500" fill="#15171C" text-anchor="middle" font-family="IBM Plex Mono, Consolas, monospace">torch.from_numpy(arr) · tensor.numpy()</text><rect x="388" y="50" width="348" height="210" rx="8" fill="#FBFBF9" stroke="#9AA0A8" stroke-width="1"/><text x="562" y="76" font-size="13.5" font-weight="700" fill="#1E6B34" text-anchor="middle">새로 복사함 (서로 독립)</text><rect x="412" y="96" width="120" height="48" rx="8" fill="#E3F1F3" stroke="#1F7A8C" stroke-width="1.5"/><text x="472" y="125" font-size="13" font-weight="600" fill="#1F7A8C" text-anchor="middle" font-family="IBM Plex Mono, Consolas, monospace">np_data</text><rect x="592" y="96" width="120" height="48" rx="8" fill="#EDEAFA" stroke="#4635B1" stroke-width="1.5"/><text x="652" y="125" font-size="13" font-weight="600" fill="#4635B1" text-anchor="middle" font-family="IBM Plex Mono, Consolas, monospace">tensor_data</text><rect x="412" y="182" width="120" height="44" rx="8" fill="#FFFFFF" stroke="#15171C" stroke-width="1.5"/><text x="472" y="209" font-size="12.5" font-weight="500" fill="#15171C" text-anchor="middle">값 묶음 ①</text><rect x="592" y="182" width="120" height="44" rx="8" fill="#FFFFFF" stroke="#15171C" stroke-width="1.5"/><text x="652" y="209" font-size="12.5" font-weight="500" fill="#15171C" text-anchor="middle">값 묶음 ②</text><line x1="472" y1="146" x2="472" y2="180" stroke="#15171C" stroke-width="1.6" marker-end="url(#ah-ch01_memory)"/><line x1="652" y1="146" x2="652" y2="180" stroke="#15171C" stroke-width="1.6" marker-end="url(#ah-ch01_memory)"/><text x="562" y="246" font-size="12.5" font-weight="500" fill="#15171C" text-anchor="middle" font-family="IBM Plex Mono, Consolas, monospace">torch.tensor(arr) · .clone() · .copy()</text></svg><figcaption>그림 1-6 · 왼쪽은 이름 두 개가 같은 값을 가리키고, 오른쪽은 값을 따로 가집니다.</figcaption></figure>
 <div class="codeblock"><div class="codebar"><span>PYTHON · code/ch01_3_tensor_operations.py · CODE 03 · 실행 확인</span></div><pre class="src"><code>numpy_data = np.array([[10, 20], [30, 40]], dtype=np.float32)
+
 shared_tensor = torch.from_numpy(numpy_data)
 copied_tensor = shared_tensor.clone()
+
 # NumPy 배열의 첫 번째 값을 변경합니다.
 numpy_data[0, 0] = 99
+
 print(&quot;변경된 NumPy 배열:&quot;)
 print(numpy_data)
+
 print()
 print(&quot;메모리를 공유하는 Tensor:&quot;)
 print(shared_tensor)
+
 print()
 print(&quot;미리 복사한 독립 Tensor:&quot;)
 print(copied_tensor)
@@ -1586,8 +1633,10 @@ float32 로 맞추기 : torch.float32
 </ul>
 <p>다음 코드는 GPU가 있으면 GPU를, 없으면 CPU를 고릅니다.</p>
 <div class="codeblock"><div class="codebar"><span>PYTHON · code/ch01_3_tensor_operations.py · CODE 04 · 실행 확인</span></div><pre class="src"><code>device = torch.device(&quot;cuda&quot; if torch.cuda.is_available() else &quot;cpu&quot;)
+
 data = torch.tensor([[1.0, 2.0], [3.0, 4.0]])
 data_on_device = data.to(device)
+
 print(&quot;선택된 장치:&quot;, device)
 print(&quot;Tensor의 장치:&quot;, data_on_device.device)
 </code></pre></div>
@@ -1597,12 +1646,15 @@ Tensor의 장치: cpu
 <p>이 실행 환경에는 GPU가 없어 <code>cpu</code>가 나왔습니다. GPU가 있는 PC나 Colab에서는 <code>cuda</code>가 나옵니다. 계산하는 Tensor들은 <strong>같은 장치</strong>에 있어야 합니다. 4장부터 모델과 데이터를 <code>.to(device)</code>로 같은 장치에 옮깁니다.</p>
 </section><section class="section" id="s18"><h2><span class="num">18</span>1-3 모양 바꾸기: reshape와 flatten</h2><p><code>reshape()</code>는 원소의 총개수를 유지하면서 모양을 바꿉니다. <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mn>2</mn><mo>&#x000D7;</mo><mn>3</mn><mo>&#x0003D;</mo><mn>3</mn><mo>&#x000D7;</mo><mn>2</mn><mo>&#x0003D;</mo><mn>6</mn></mrow></math>이므로 원소 6개는 <code>(2, 3)</code>, <code>(3, 2)</code>, <code>(1, 6)</code>이 될 수 있습니다. <code>flatten()</code>은 여러 차원을 1차원으로 펼칩니다.</p>
 <div class="codeblock"><div class="codebar"><span>PYTHON · code/ch01_3_tensor_operations.py · CODE 05 · 실행 확인</span></div><pre class="src"><code>tensor_a = torch.arange(1, 7).reshape(2, 3)
+
 print(&quot;원래 Tensor:&quot;)
 print(tensor_a)
 print(&quot;shape:&quot;, tensor_a.shape)
+
 print()
 print(&quot;reshape(3, 2):&quot;)
 print(tensor_a.reshape(3, 2))
+
 print()
 print(&quot;flatten():&quot;)
 print(tensor_a.flatten())
@@ -1649,11 +1701,14 @@ tensor([1, 2, 3, 4, 5, 6])
     [[10, 20, 30],
      [40, 50, 60]]
 )
+
 cat_dim0 = torch.cat([tensor_a, tensor_b], dim=0)
 cat_dim1 = torch.cat([tensor_a, tensor_b], dim=1)
+
 print(&quot;cat dim=0:&quot;)
 print(cat_dim0)
 print(&quot;shape:&quot;, cat_dim0.shape)
+
 print()
 print(&quot;cat dim=1:&quot;)
 print(cat_dim1)
@@ -1672,6 +1727,7 @@ tensor([[ 1,  2,  3, 10, 20, 30],
 shape: torch.Size([2, 6])
 </pre></div>
 <div class="codeblock"><div class="codebar"><span>PYTHON · code/ch01_3_tensor_operations.py · CODE 07 · 실행 확인</span></div><pre class="src"><code>stack_dim0 = torch.stack([tensor_a, tensor_b], dim=0)
+
 print(&quot;stack dim=0:&quot;)
 print(stack_dim0)
 print(&quot;shape:&quot;, stack_dim0.shape)
@@ -1693,18 +1749,23 @@ batch_1 = torch.tensor(
     [[22.0, 0.10],
      [25.0, 0.15]]
 )
+
 # 두 번째 측정 묶음
 batch_2 = torch.tensor(
     [[31.0, 0.45],
      [36.0, 0.90]]
 )
+
 # 모든 측정값을 하나의 표로 연결합니다.
 all_sensor_data = torch.cat([batch_1, batch_2], dim=0)
+
 # 두 측정 묶음을 구분한 상태로 쌓습니다.
 grouped_sensor_data = torch.stack([batch_1, batch_2], dim=0)
+
 print(&quot;하나로 연결한 센서 데이터:&quot;)
 print(all_sensor_data)
 print(&quot;shape:&quot;, all_sensor_data.shape)
+
 print()
 print(&quot;측정 묶음별로 쌓은 센서 데이터:&quot;)
 print(grouped_sensor_data)
@@ -1820,7 +1881,7 @@ shape: torch.Size([2, 2, 2])
 </table>
 </section><div class="chapter-links" id="chapter-links"></div></main></div>
 <footer class="footer">딥러닝 기초 · v01  · 실습 결과는 실제 환경에서 검증</footer>
-<script>window.COURSE={"title": "딥러닝 기초", "short_title": "DEEP LEARNING BASICS", "home_label": "전체 학습 안내서", "chapters": [{"id": "ch01", "number": 1, "title": "NumPy와 텐서", "file": "ch01_numpy_tensor_v01.html"}]};</script><script>/*
+<script>window.COURSE={"title": "딥러닝 기초", "short_title": "DEEP LEARNING BASICS", "home_label": "전체 학습 안내서", "chapters": [{"id": "ch01", "number": 1, "title": "NumPy와 텐서", "file": "ch01_numpy_tensor_v01.html"}, {"id": "ch02", "number": 2, "title": "선형회귀", "file": "ch02_linear_regression_v01.html"}]};</script><script>/*
  * 교육용 HTML 공통 동작 — 유지보수용 원본 (STANDARD 4·10.3·10.4)
  * 페이지 본문은 바꾸지 않고 탐색·이전/다음·모바일 메뉴·코드 복사만 덧붙인다.
  * 입력: 페이지의 window.COURSE (tools/guide/build_guides.py가 실제 존재하는 장만 넣음),
